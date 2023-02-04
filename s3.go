@@ -37,6 +37,6 @@ func uploadS3(bucketName string, filePrefix string, fileName string) {
 }
 
 func exitErrorf(msg string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, msg+"\n", args...)
+	fmt.Fprintf(os.Stderr, msg+"\n")
 	os.Exit(1)
 }
