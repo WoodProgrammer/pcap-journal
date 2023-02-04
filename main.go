@@ -4,22 +4,18 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/fsnotify/fsnotify"
 )
-
-func uploadS3(bucketName string, filePrefix int64, fileName string) {
-	fmt.Println("Uploading file bucketNam %s %d %s", bucketName, filePrefix, fileName)
-
-}
 
 func main() {
 	prevFileName := ""
 	nextFileName := ""
 	fileDir, ok := os.LookupEnv("PCAP_DIR")
 	bucketName, buck_ok := os.LookupEnv("BUCKET_NAME")
-	filePrefix := time.Now().Unix()
+	filePrefix := strconv.FormatInt(time.Now().UTC().UnixNano(), 10)
 	fmt.Println(filePrefix)
 
 	if buck_ok != true {
