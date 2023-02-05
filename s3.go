@@ -13,6 +13,7 @@ func uploadS3(bucketName string, filePrefix string, fileName string) {
 
 	fullName := filePrefix + "/" + fileName
 	file, err := os.Open(fileName)
+
 	if err != nil {
 		exitErrorf("Unable to open file %q, %v", fileName, err)
 	}
@@ -29,6 +30,7 @@ func uploadS3(bucketName string, filePrefix string, fileName string) {
 
 		Body: file,
 	})
+
 	if err != nil {
 		exitErrorf("Unable to upload %q to %q, %v", fileName, bucketName, err)
 	}
